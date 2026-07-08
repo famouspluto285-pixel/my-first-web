@@ -63,3 +63,7 @@ nav{
     align-items: center;
     margin: 20px;
 }
+nav h2 a{
+    color: #00ff99;
+    text-decoration: none;
+}
