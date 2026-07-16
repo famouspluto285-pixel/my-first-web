@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Scar's Store - Shop Like a Pro</title>
+    <title>Pretty Glow Hub</title>
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
         
@@ -17,6 +17,7 @@
             --gray: #57606f;
             --light-gray: #f1f2f6;
             --white: #ffffff;
+            --gold: #d4a574;
         }
         
         body { 
@@ -39,9 +40,9 @@
         }
         
         .logo-text {
-            font-size: 1.3rem;
+            font-size: 1.2rem;
             font-weight: 900;
-            color: var(--primary);
+            color: var(--gold);
             letter-spacing: -0.5px;
         }
         
@@ -85,30 +86,23 @@
             justify-content: center;
         }
         
-        .flash-banner {
-            background: linear-gradient(90deg, var(--primary) 0%, var(--red) 100%);
-            color: white;
-            padding: 0.6rem 1rem;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            font-size: 0.85rem;
+        .hero-banner {
+            background: linear-gradient(135deg, #f5e6d3 0%, #d4a574 100%);
+            color: var(--dark);
+            text-align: center;
+            padding: 2.5rem 1rem;
         }
         
-        .flash-text {
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            font-weight: 600;
+        .hero-title {
+            font-size: 1.6rem;
+            font-weight: 800;
+            margin-bottom: 0.5rem;
+            color: var(--dark);
         }
         
-        .countdown {
-            background: rgba(255,255,255,0.2);
-            padding: 0.2rem 0.6rem;
-            border-radius: 4px;
-            font-family: monospace;
-            font-weight: bold;
-            font-size: 0.9rem;
+        .hero-sub {
+            font-size: 0.95rem;
+            opacity: 0.8;
         }
         
         .categories {
@@ -137,53 +131,8 @@
         }
         
         .cat-pill.active {
-            background: var(--primary);
+            background: var(--gold);
             color: white;
-        }
-        
-        .promo-scroll {
-            display: flex;
-            gap: 0.8rem;
-            overflow-x: auto;
-            padding: 1rem;
-            scrollbar-width: none;
-        }
-        
-        .promo-scroll::-webkit-scrollbar { display: none; }
-        
-        .promo-card {
-            min-width: 280px;
-            height: 140px;
-            background: linear-gradient(135deg, var(--primary) 0%, var(--yellow) 100%);
-            border-radius: 16px;
-            padding: 1.2rem;
-            color: white;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .promo-card::after {
-            content: "🔥";
-            position: absolute;
-            right: -10px;
-            top: -10px;
-            font-size: 5rem;
-            opacity: 0.2;
-        }
-        
-        .promo-title { font-size: 1.3rem; font-weight: 900; margin-bottom: 0.3rem; }
-        .promo-sub { font-size: 0.9rem; opacity: 0.9; }
-        .promo-code {
-            margin-top: 0.5rem;
-            background: rgba(255,255,255,0.3);
-            padding: 0.3rem 0.8rem;
-            border-radius: 20px;
-            font-size: 0.8rem;
-            font-weight: bold;
-            width: fit-content;
         }
         
         .section-header {
@@ -201,31 +150,26 @@
             gap: 0.4rem;
         }
         
-        .see-all {
-            color: var(--primary);
-            font-size: 0.85rem;
-            font-weight: 600;
-        }
-        
         .products-grid {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
-            gap: 0.6rem;
+            gap: 0.8rem;
             padding: 0 1rem 1rem;
         }
         
         .product-card {
             background: var(--white);
-            border-radius: 12px;
+            border-radius: 16px;
             overflow: hidden;
             position: relative;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.06);
         }
         
         .product-img-wrap {
             position: relative;
             width: 100%;
             aspect-ratio: 1;
-            background: var(--light-gray);
+            background: linear-gradient(135deg, #f5e6d3 0%, #e8d5c0 100%);
         }
         
         .product-img {
@@ -236,114 +180,82 @@
         
         .badge {
             position: absolute;
-            top: 8px;
-            left: 8px;
-            padding: 0.2rem 0.5rem;
-            border-radius: 4px;
-            font-size: 0.65rem;
+            top: 10px;
+            left: 10px;
+            padding: 0.3rem 0.7rem;
+            border-radius: 20px;
+            font-size: 0.7rem;
             font-weight: 800;
             text-transform: uppercase;
         }
         
-        .badge-hot { background: var(--red); color: white; }
-        .badge-sale { background: var(--primary); color: white; }
-        .badge-free { background: var(--green); color: white; }
-        .badge-low { background: var(--yellow); color: var(--dark); }
+        .badge-bestseller { background: var(--gold); color: white; }
+        .badge-new { background: var(--green); color: white; }
+        .badge-popular { background: var(--red); color: white; }
         
         .wishlist-btn {
             position: absolute;
-            top: 8px;
-            right: 8px;
+            top: 10px;
+            right: 10px;
             background: rgba(255,255,255,0.9);
             border: none;
-            width: 32px;
-            height: 32px;
+            width: 36px;
+            height: 36px;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 1rem;
+            font-size: 1.1rem;
             cursor: pointer;
         }
         
         .product-info {
-            padding: 0.7rem;
+            padding: 1rem;
         }
         
         .product-name {
-            font-size: 0.85rem;
-            font-weight: 600;
-            line-height: 1.3;
-            display: -webkit-box;
-            -webkit-line-clamp: 2;
-            -webkit-box-orient: vertical;
-            overflow: hidden;
-            margin-bottom: 0.4rem;
-            min-height: 2.4rem;
+            font-size: 0.9rem;
+            font-weight: 700;
+            line-height: 1.4;
+            margin-bottom: 0.5rem;
+            min-height: 2.5rem;
         }
         
         .rating {
             display: flex;
             align-items: center;
             gap: 0.3rem;
-            font-size: 0.75rem;
+            font-size: 0.8rem;
             color: var(--gray);
-            margin-bottom: 0.4rem;
+            margin-bottom: 0.5rem;
         }
         
         .stars { color: var(--yellow); }
         
         .price-row {
             display: flex;
-            align-items: baseline;
-            gap: 0.4rem;
-            margin-bottom: 0.3rem;
+            align-items: center;
+            justify-content: space-between;
+            margin-top: 0.5rem;
         }
         
         .current-price {
-            font-size: 1.1rem;
+            font-size: 1.2rem;
             font-weight: 900;
             color: var(--dark);
         }
         
-        .original-price {
-            font-size: 0.8rem;
-            color: var(--gray);
-            text-decoration: line-through;
-        }
-        
-        .discount-tag {
-            background: rgba(255,107,0,0.15);
-            color: var(--primary);
-            padding: 0.15rem 0.4rem;
-            border-radius: 4px;
-            font-size: 0.7rem;
-            font-weight: 700;
-        }
-        
-        .sold-row {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            margin-top: 0.3rem;
-        }
-        
-        .sold-text {
-            font-size: 0.7rem;
-            color: var(--gray);
-        }
-        
         .add-cart-btn {
-            background: var(--dark);
+            background: var(--gold);
             color: white;
             border: none;
-            width: 32px;
-            height: 32px;
+            width: 40px;
+            height: 40px;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 1.2rem;
+            font-size: 1.4rem;
             cursor: pointer;
         }
         
@@ -353,8 +265,6 @@
             color: var(--gray);
             grid-column: 1 / -1;
         }
-        
-        .no-results-icon { font-size: 3rem; margin-bottom: 1rem; }
         
         .cart-overlay {
             position: fixed;
@@ -386,7 +296,7 @@
         .cart-sheet.open { bottom: 0; }
         
         .cart-header {
-            padding: 1rem;
+            padding: 1.2rem;
             border-bottom: 1px solid #eee;
             display: flex;
             justify-content: space-between;
@@ -421,47 +331,47 @@
         .cart-item-img {
             width: 80px;
             height: 80px;
-            border-radius: 10px;
+            border-radius: 12px;
             object-fit: cover;
             background: var(--light-gray);
         }
         
         .cart-item-info { flex: 1; }
-        .cart-item-name { font-weight: 600; font-size: 0.9rem; margin-bottom: 0.3rem; }
-        .cart-item-price { color: var(--red); font-weight: 800; font-size: 1rem; }
+        .cart-item-name { font-weight: 700; font-size: 0.95rem; margin-bottom: 0.3rem; }
+        .cart-item-price { color: var(--gold); font-weight: 800; font-size: 1.1rem; }
         
         .qty-controls {
             display: flex;
             align-items: center;
-            gap: 0.5rem;
+            gap: 0.6rem;
             margin-top: 0.5rem;
         }
         
         .qty-btn {
-            width: 28px;
-            height: 28px;
+            width: 32px;
+            height: 32px;
             border: 1px solid #ddd;
             background: white;
-            border-radius: 6px;
+            border-radius: 8px;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 1rem;
+            font-size: 1.1rem;
             cursor: pointer;
         }
         
-        .qty-num { font-weight: 600; min-width: 20px; text-align: center; }
+        .qty-num { font-weight: 700; min-width: 24px; text-align: center; font-size: 1rem; }
         
         .remove-item {
             background: none;
             border: none;
             color: var(--gray);
-            font-size: 0.75rem;
-            margin-top: 0.3rem;
+            font-size: 0.8rem;
+            margin-top: 0.4rem;
         }
         
         .cart-footer {
-            padding: 1rem;
+            padding: 1.2rem;
             border-top: 1px solid #eee;
             background: var(--white);
         }
@@ -473,12 +383,12 @@
             margin-bottom: 1rem;
         }
         
-        .cart-total-label { font-size: 0.9rem; color: var(--gray); }
-        .cart-total-amount { font-size: 1.3rem; font-weight: 900; }
+        .cart-total-label { font-size: 0.95rem; color: var(--gray); }
+        .cart-total-amount { font-size: 1.4rem; font-weight: 900; }
         
         .checkout-btn {
             width: 100%;
-            background: var(--primary);
+            background: var(--gold);
             color: white;
             border: none;
             padding: 1rem;
@@ -490,7 +400,7 @@
         
         .checkout-form {
             display: none;
-            padding: 1rem;
+            padding: 1rem 0 0;
         }
         
         .checkout-form.show { display: block; }
@@ -503,14 +413,14 @@
             font-weight: 600;
             color: var(--gray);
         }
-        .form-group input {
+        .form-group input, .form-group select {
             width: 100%;
             padding: 0.9rem 1rem;
-            border: 1px solid #ddd;
             border-radius: 10px;
             font-size: 1rem;
             background: var(--light-gray);
             border: none;
+            font-family: inherit;
         }
         
         .whatsapp-btn {
@@ -530,7 +440,6 @@
             margin-top: 0.5rem;
         }
         
-        /* PROFILE PAGE */
         .profile-page {
             display: none;
             min-height: 100vh;
@@ -541,9 +450,9 @@
         .profile-page.show { display: block; }
         
         .profile-header {
-            background: linear-gradient(135deg, var(--primary) 0%, var(--red) 100%);
-            color: white;
-            padding: 2rem 1rem;
+            background: linear-gradient(135deg, #f5e6d3 0%, #d4a574 100%);
+            color: var(--dark);
+            padding: 2.5rem 1rem;
             text-align: center;
         }
         
@@ -566,7 +475,7 @@
         
         .profile-phone {
             font-size: 0.9rem;
-            opacity: 0.9;
+            opacity: 0.8;
             margin-top: 0.3rem;
         }
         
@@ -582,21 +491,9 @@
             z-index: 10;
         }
         
-        .stat-item {
-            text-align: center;
-        }
-        
-        .stat-num {
-            font-size: 1.2rem;
-            font-weight: 800;
-            color: var(--primary);
-        }
-        
-        .stat-label {
-            font-size: 0.75rem;
-            color: var(--gray);
-            margin-top: 0.2rem;
-        }
+        .stat-item { text-align: center; }
+        .stat-num { font-size: 1.2rem; font-weight: 800; color: var(--gold); }
+        .stat-label { font-size: 0.75rem; color: var(--gray); margin-top: 0.2rem; }
         
         .profile-menu {
             background: var(--white);
@@ -627,16 +524,8 @@
             font-size: 1.2rem;
         }
         
-        .menu-text {
-            flex: 1;
-            font-weight: 600;
-            font-size: 0.95rem;
-        }
-        
-        .menu-arrow {
-            color: var(--gray);
-            font-size: 1.2rem;
-        }
+        .menu-text { flex: 1; font-weight: 600; font-size: 0.95rem; }
+        .menu-arrow { color: var(--gray); font-size: 1.2rem; }
         
         .bottom-nav {
             position: fixed;
@@ -663,7 +552,7 @@
             cursor: pointer;
         }
         
-        .nav-item.active { color: var(--primary); }
+        .nav-item.active { color: var(--gold); }
         .nav-icon { font-size: 1.4rem; }
         
         .empty-cart {
@@ -671,21 +560,20 @@
             padding: 3rem 1rem;
             color: var(--gray);
         }
+        
         .empty-cart-icon { font-size: 4rem; margin-bottom: 1rem; }
         .empty-cart-text { font-size: 1rem; }
         
         .hide-scroll::-webkit-scrollbar { display: none; }
-        
         .home-page { display: block; }
         .home-page.hide { display: none; }
     </style>
 </head>
 <body>
 
-    <!-- HOME PAGE -->
     <div class="home-page" id="home-page">
         <div class="top-bar">
-            <div class="logo-text">🛒 SCAR'S online shopping</div>
+            <div class="logo-text">✨ PRETTY GLOW HUB</div>
             <input type="text" class="search-box" id="search-input" placeholder="🔍 Search products..." oninput="searchProducts()">
             <div class="cart-icon-top" onclick="openCart()">
                 🛒
@@ -693,57 +581,31 @@
             </div>
         </div>
 
-        <div class="flash-banner">
-            <div class="flash-text">
-                ⚡ FLASH SALE
-                <span style="font-size:0.75rem;opacity:0.8;">Ends in:</span>
-            </div>
-            <div class="countdown" id="countdown">04:23:17</div>
+        <div class="hero-banner">
+            <div class="hero-title">Glow Different ✨</div>
+            <div class="hero-sub">Premium skincare for radiant skin</div>
         </div>
 
         <div class="categories hide-scroll">
             <button class="cat-pill active">All</button>
-            <button class="cat-pill">Electronics</button>
-            <button class="cat-pill">Fashion</button>
-            <button class="cat-pill">Home</button>
-            <button class="cat-pill">Beauty</button>
-            <button class="cat-pill">Sports</button>
-            <button class="cat-pill">Toys</button>
-        </div>
-
-        <div class="promo-scroll hide-scroll">
-            <div class="promo-card">
-                <div class="promo-title">MEGA DEALS</div>
-                <div class="promo-sub">Up to 70% off everything</div>
-                <div class="promo-code">Code: SCAR70</div>
-            </div>
-            <div class="promo-card" style="background:linear-gradient(135deg,#764ba2 0%,#f093fb 100%);">
-                <div class="promo-title">FREE SHIPPING</div>
-                <div class="promo-sub">On all orders over ₦10,000</div>
-                <div class="promo-code">No code needed</div>
-            </div>
-            <div class="promo-card" style="background:linear-gradient(135deg,#11998e 0%,#38ef7d 100%);">
-                <div class="promo-title">NEW ARRIVALS</div>
-                <div class="promo-sub">Fresh drops every day</div>
-                <div class="promo-code">Shop now →</div>
-            </div>
+            <button class="cat-pill">Oils</button>
+            <button class="cat-pill">Scrubs</button>
+            <button class="cat-pill">Soaps</button>
         </div>
 
         <div class="section-header">
             <div class="section-title">
-                🔥 Hot Deals
+                ✨ Best Sellers
             </div>
-            <span class="see-all">See all ></span>
         </div>
 
         <div class="products-grid" id="products"></div>
     </div>
 
-    <!-- PROFILE PAGE -->
     <div class="profile-page" id="profile-page">
         <div class="profile-header">
             <div class="profile-avatar">👤</div>
-            <div class="profile-name">Scar</div>
+            <div class="profile-name">Pretty Glow Hub</div>
             <div class="profile-phone">+234 810 976 3849</div>
         </div>
         
@@ -801,7 +663,6 @@
         </div>
     </div>
 
-    <!-- CART BOTTOM SHEET -->
     <div class="cart-overlay" id="cart-overlay" onclick="closeCart()"></div>
     <div class="cart-sheet" id="cart-sheet">
         <div class="cart-header">
@@ -828,8 +689,22 @@
                     <input type="tel" id="cust-phone" required placeholder="Your phone">
                 </div>
                 <div class="form-group">
+                    <label>Country *</label>
+                    <select id="cust-country" required>
+                        <option value="">Select country</option>
+                        <option value="Nigeria" selected>Nigeria</option>
+                        <option value="Ghana">Ghana</option>
+                        <option value="South Africa">South Africa</option>
+                        <option value="Kenya">Kenya</option>
+                        <option value="United Kingdom">United Kingdom</option>
+                        <option value="United States">United States</option>
+                        <option value="Canada">Canada</option>
+                        <option value="Other">Other</option>
+                    </select>
+                </div>
+                <div class="form-group">
                     <label>Delivery Address *</label>
-                    <input type="text" id="cust-address" required placeholder="Street, City">
+                    <input type="text" id="cust-address" required placeholder="Street, City, State">
                 </div>
                 <button type="submit" class="whatsapp-btn">
                     📱 Order via WhatsApp
@@ -838,15 +713,10 @@
         </div>
     </div>
 
-    <!-- BOTTOM NAVIGATION -->
     <nav class="bottom-nav">
         <button class="nav-item active" id="nav-home" onclick="showPage('home')">
             <span class="nav-icon">🏠</span>
             <span>Home</span>
-        </button>
-        <button class="nav-item" id="nav-deals">
-            <span class="nav-icon">🏷️</span>
-            <span>Deals</span>
         </button>
         <button class="nav-item" id="nav-cart" onclick="openCart()">
             <span class="nav-icon">🛒</span>
@@ -862,30 +732,43 @@
         const YOUR_WHATSAPP_NUMBER = "2348109763849";
         
         const products = [
-            { id: 1, name: "Premium Wireless Headphones with Noise Cancellation", price: 4500, originalPrice: 12000, image: "product1.jpg.jpg", badge: "hot", badgeText: "HOT", rating: 4.8, reviews: 1243, sold: 8560 },
-            { id: 2, name: "Smart Fitness Watch Heart Rate Monitor", price: 3500, originalPrice: 8500, image: "product2.jpg.jpg", badge: "sale", badgeText: "-60%", rating: 4.6, reviews: 892, sold: 5430 },
-            { id: 3, name: "Minimal Waterproof Laptop Backpack 20L", price: 2800, originalPrice: 7000, image: "product3.jpg.jpg", badge: "free", badgeText: "FREE SHIP", rating: 4.7, reviews: 2156, sold: 12300 },
-            { id: 4, name: "Ergonomic Wireless Mouse Rechargeable Silent", price: 1800, originalPrice: 4500, image: "product4.jpg.jpg", badge: "sale", badgeText: "-60%", rating: 4.5, reviews: 567, sold: 3400 },
-            { id: 5, name: "LED Desk Lamp Dimmable USB Touch Control", price: 2200, originalPrice: 5500, image: "product5.jpg.jpg", badge: "low", badgeText: "LOW STOCK", rating: 4.4, reviews: 445, sold: 2890 },
-            { id: 6, name: "Aluminum Phone Stand Adjustable Foldable", price: 1200, originalPrice: 3000, image: "product6.jpg.jpg", badge: "hot", badgeText: "HOT", rating: 4.9, reviews: 3201, sold: 15600 },
-            { id: 7, name: "Bluetooth Speaker Portable Waterproof Bass", price: 3200, originalPrice: 8000, image: "product7.jpg.jpg", badge: "sale", badgeText: "-61%", rating: 4.3, reviews: 778, sold: 4200 },
-            { id: 8, name: "USB-C Fast Charger 65W 3-Port GaN", price: 2500, originalPrice: 6000, image: "product8.jpg.jpg", badge: "free", badgeText: "FREE SHIP", rating: 4.7, reviews: 1567, sold: 8900 },
-            { id: 9, name: "Mechanical Keyboard RGB Backlit 87 Keys", price: 6500, originalPrice: 16000, image: "product9.jpg.jpg", badge: "hot", badgeText: "HOT", rating: 4.6, reviews: 923, sold: 5100 },
-            { id: 10, name: "Webcam 1080P HD with Microphone Auto Focus", price: 2800, originalPrice: 7000, image: "product10.jpg.jpg", badge: "sale", badgeText: "-63%", rating: 4.5, reviews: 667, sold: 3800 },
-            { id: 11, name: "Wireless Earbuds Bluetooth 5.3 Touch Control", price: 2600, originalPrice: 6500, image: "product11.jpg.jpg", badge: "low", badgeText: "LOW STOCK", rating: 4.4, reviews: 2341, sold: 11200 },
-            { id: 12, name: "Laptop Cooling Pad 6 Fans RGB LED", price: 4200, originalPrice: 10500, image: "product12.jpg.jpg", badge: "free", badgeText: "FREE SHIP", rating: 4.8, reviews: 445, sold: 2600 },
-            { id: 13, name: "Portable Power Bank 20000mAh Fast Charge", price: 3800, originalPrice: 9500, image: "product13.jpg.jpg", badge: "hot", badgeText: "HOT", rating: 4.7, reviews: 1876, sold: 9800 },
-            { id: 14, name: "Tablet Stand Adjustable Aluminum Foldable", price: 1500, originalPrice: 3800, image: "product14.jpg.jpg", badge: "sale", badgeText: "-61%", rating: 4.5, reviews: 334, sold: 2100 },
-            { id: 15, name: "Smart LED Strip Lights 10M RGB App Control", price: 2000, originalPrice: 5000, image: "product15.jpg.jpg", badge: "free", badgeText: "FREE SHIP", rating: 4.6, reviews: 1567, sold: 7400 },
-            { id: 16, name: "Gaming Mouse Pad Large RGB Extended", price: 1800, originalPrice: 4500, image: "product16.jpg.jpg", badge: "hot", badgeText: "HOT", rating: 4.7, reviews: 1123, sold: 8900 }
+            { 
+                id: 1, 
+                name: "Turmeric Luminous Glow Oil", 
+                price: 10000, 
+                image: "product1.jpg.jpg", 
+                badge: "bestseller", 
+                badgeText: "BESTSELLER", 
+                rating: 4.9, 
+                reviews: 2156, 
+                sold: 15400 
+            },
+            { 
+                id: 2, 
+                name: "Deep Glow Scrub", 
+                price: 9000, 
+                image: "product2.jpg.jpg", 
+                badge: "new", 
+                badgeText: "NEW", 
+                rating: 4.7, 
+                reviews: 892, 
+                sold: 6200 
+            },
+            { 
+                id: 3, 
+                name: "Brightening Black Soap", 
+                price: 12000, 
+                image: "product3.jpg.jpg", 
+                badge: "popular", 
+                badgeText: "POPULAR", 
+                rating: 4.8, 
+                reviews: 1876, 
+                sold: 9800 
+            }
         ];
 
         let cart = [];
         let currentProducts = [...products];
-
-        function getDiscount(original, current) {
-            return Math.round(((original - current) / original) * 100);
-        }
 
         function renderStars(rating) {
             const full = Math.floor(rating);
@@ -912,12 +795,10 @@
                 return;
             }
             
-            container.innerHTML = productList.map(p => {
-                const discount = getDiscount(p.originalPrice, p.price);
-                return `
+            container.innerHTML = productList.map(p => `
                 <div class="product-card">
                     <div class="product-img-wrap">
-                        <img src="${p.image}" alt="${p.name}" class="product-img" onerror="this.style.display='none';this.parentElement.innerHTML+='<div style=\\'display:flex;align-items:center;justify-content:center;height:100%;font-size:3rem;\\'>📦</div>'">
+                        <img src="${p.image}" alt="${p.name}" class="product-img" onerror="this.style.display='none';this.parentElement.innerHTML+='<div style=\\'display:flex;align-items:center;justify-content:center;height:100%;font-size:3rem;\\'>✨</div>'">
                         <span class="badge badge-${p.badge}">${p.badgeText}</span>
                         <button class="wishlist-btn">♡</button>
                     </div>
@@ -929,17 +810,12 @@
                         </div>
                         <div class="price-row">
                             <span class="current-price">₦${p.price.toLocaleString()}</span>
-                            <span class="original-price">₦${p.originalPrice.toLocaleString()}</span>
-                            <span class="discount-tag">-${discount}%</span>
-                        </div>
-                        <div class="sold-row">
-                            <span class="sold-text">${formatNumber(p.sold)} sold</span>
                             <button class="add-cart-btn" onclick="addToCart(${p.id})">+</button>
                         </div>
+                        <div class="sold-text" style="font-size:0.75rem;color:var(--gray);margin-top:0.3rem;">${formatNumber(p.sold)} sold</div>
                     </div>
                 </div>
-                `;
-            }).join('');
+            `).join('');
         }
 
         function searchProducts() {
@@ -995,7 +871,7 @@
                 itemsContainer.innerHTML = `
                     <div class="empty-cart">
                         <div class="empty-cart-icon">🛒</div>
-                        <div class="empty-cart-text">Your cart is empty<br>Add some hot deals!</div>
+                        <div class="empty-cart-text">Your cart is empty<br>Add some glow!</div>
                     </div>
                 `;
                 document.getElementById('checkout-form').classList.remove('show');
@@ -1023,7 +899,6 @@
         function openCart() {
             document.getElementById('cart-sheet').classList.add('open');
             document.getElementById('cart-overlay').classList.add('show');
-            setActiveNav('cart');
         }
 
         function closeCart() {
@@ -1045,15 +920,17 @@
             
             const name = document.getElementById('cust-name').value;
             const phone = document.getElementById('cust-phone').value;
+            const country = document.getElementById('cust-country').value;
             const address = document.getElementById('cust-address').value;
             
             const total = cart.reduce((sum, item) => sum + (item.price * item.qty), 0);
             
-            let message = `🛒 *New Order from Scar's Store*%0A%0A`;
+            let message = `✨ *New Order from Pretty Glow Hub*%0A%0A`;
             message += `👤 *Name:* ${name}%0A`;
             message += `📞 *Phone:* ${phone}%0A`;
+            message += `🌍 *Country:* ${country}%0A`;
             message += `📍 *Address:* ${address}%0A%0A`;
-            message += `📦 *Order Items:*%0A`;
+            message += `✨ *Order Items:*%0A`;
             
             cart.forEach((item, i) => {
                 message += `${i + 1}. ${item.name}%0A   Qty: ${item.qty} × ₦${item.price.toLocaleString()} = ₦${(item.price * item.qty).toLocaleString()}%0A`;
@@ -1092,35 +969,8 @@
             if (active === 'me') document.getElementById('nav-me').classList.add('active');
         }
 
-        function startCountdown() {
-            let hours = 4, minutes = 23, seconds = 17;
-            
-            setInterval(() => {
-                seconds--;
-                if (seconds < 0) {
-                    seconds = 59;
-                    minutes--;
-                }
-                if (minutes < 0) {
-                    minutes = 59;
-                    hours--;
-                }
-                if (hours < 0) {
-                    hours = 23;
-                    minutes = 59;
-                    seconds = 59;
-                }
-                
-                const h = hours.toString().padStart(2, '0');
-                const m = minutes.toString().padStart(2, '0');
-                const s = seconds.toString().padStart(2, '0');
-                document.getElementById('countdown').textContent = `${h}:${m}:${s}`;
-            }, 1000);
-        }
-
         renderProducts();
         updateCart();
-        startCountdown();
     </script>
 
 </body>
